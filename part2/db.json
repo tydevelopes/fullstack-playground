@@ -25,10 +25,22 @@
       "id": 4
     },
     {
-      "content": "stay motivated",
-      "date": "2019-07-27T18:48:36.910Z",
+      "content": "deal",
+      "date": "2019-07-27T20:38:01.098Z",
       "important": true,
       "id": 5
+    },
+    {
+      "content": "be sober",
+      "date": "2019-07-27T20:28:18.773Z",
+      "important": true,
+      "id": 6
+    },
+    {
+      "content": "deal",
+      "date": "2019-07-27T20:38:01.098Z",
+      "important": false,
+      "id": 7
     }
   ]
 }
