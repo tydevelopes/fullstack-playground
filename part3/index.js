@@ -1,8 +1,18 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const morgan = require('morgan');
 
 app.use(bodyParser.json());
+app.use(cors());
+
+morgan.token('data', (request, response) => {
+  return JSON.stringify(request.body);
+});
+app.use(
+  morgan(':method :url :status :res[content-length] - :response-time ms :data')
+);
 
 let notes = [
   {
@@ -55,23 +65,22 @@ app.delete('/notes/:id', (request, response) => {
 // add a note
 const generateId = () => {
   const maxId = notes.length > 0 ? Math.max(...notes.map(note => note.id)) : 0;
-  const note = request.body;
   return maxId + 1;
-}
+};
 app.post('/notes', (request, response) => {
   const body = request.body;
   if (!body.content) {
     return response.status(400).json({
       error: 'content missing'
-    })
+    });
   }
   const note = {
     content: body.content,
     important: body.important || false,
     date: new Date(),
-    id: generateId(),
-  }
-  notes = notes.concat(note)
+    id: generateId()
+  };
+  notes = notes.concat(note);
   response.json(note);
 });
 
