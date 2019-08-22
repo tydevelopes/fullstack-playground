@@ -19,9 +19,6 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [loginVisible, setLoginVisible] = useState(false);
 
-  if (true) {
-    const [eat, setEat] = useState('eating');
-  }
   console.log(eat);
 
   const noteFormRef = createRef();
