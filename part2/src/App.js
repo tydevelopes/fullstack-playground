@@ -19,8 +19,6 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [loginVisible, setLoginVisible] = useState(false);
 
-  console.log(eat);
-
   const noteFormRef = createRef();
 
   const addNote = event => {
@@ -28,7 +26,7 @@ const App = () => {
     noteFormRef.current.toggleVisibility();
     const noteObject = {
       content: newNote,
-      important: Math.random() < 0.5
+      important: false
     };
     noteService.create(noteObject).then(returnedNote => {
       setNotes([...notes, returnedNote]);
